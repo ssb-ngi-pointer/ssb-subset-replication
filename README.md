@@ -29,15 +29,18 @@ common root message.
 ## getSubset(query, options): source
 
 This method can be seen as a more general version of
-createHistoryStream where the id, or what you are interesting in,
-first needs to be defined. Query specifies what data you are
-interested in.
-
-The query parameter is an instance of the query language defined
+`createHistoryStream` where the id, or what you are interesting in,
+first needs to be defined. The query parameter specifies what data you
+are interested in and is an instance of the query language defined
 below.
 
 To support pagination, `startFrom`, `pageSize` and `descending` can be
 specified in the options parameter.
+
+Is it up to the receiving end of the query to determine if the query
+results in too much load. This could be if someone tries to get data
+for a large number of feeds without proper pagination, or if the query
+includes arguments in a form that strains the query planner.
 
 To get the latest 10 post messages of a particular feed the following
 query can be used:
